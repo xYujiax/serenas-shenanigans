@@ -60,6 +60,9 @@ Alt Hypothesis: The missingness of CAUSE.CATEGORY.DETAIL IS dependent on CAUSE.C
 
 To test whether or not to reject the Null Hypothesis, I calculated the observed Total Variation Distance (TVD) of the data. Then, I shuffled the values in the CAUSE.CATEGORY.DETAIL and calculated the shuffled TVD 1000 times to create the empirical distribution below. Because the observed TVD is much greater than 95% of the empirical TVDs I simulated, I reject my Null Hypothesis in favor of the Alternate that suggests the missingness of CAUSE.CATEGORY.DETAIL is probably dependent on CAUSE.CATEGORY.
 <iframe src="ass/miss1.html" width=800 height=600 frameBorder=0></iframe>
+I conducted the same kind of test to determine whether CAUSE.CATEGORY.DETAIL and OUTAGE.START.TIME and concluded that it is unlikely that CAUSE.CATEGORY.DETAIL is MAR based on OUTAGE.START.TIME. 
+
+An explanation for why 
 
 
 
