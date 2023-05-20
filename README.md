@@ -71,7 +71,7 @@ In order to better understand what characteristics are associated with different
 
 **Null Hypothesis:** The missingness of CAUSE.CATEGORY.DETAIL is NOT dependent on CAUSE.CATEGORY.
 
-**Alternate Hypothesis:** The missingness of CAUSE.CATEGORY.DETAIL IS dependent on CAUSE.CATEGORY.**
+**Alternate Hypothesis:** The missingness of CAUSE.CATEGORY.DETAIL IS dependent on CAUSE.CATEGORY.
 
 To test whether or not to reject the Null Hypothesis, I calculated the observed Total Variation Distance (TVD) of the data. Then, I shuffled the values in the CAUSE.CATEGORY.DETAIL and calculated the shuffled TVD 1000 times to create the empirical distribution below. Because the observed TVD is much greater than 95% of the empirical TVDs I simulated, I reject my Null Hypothesis in favor of the Alternate that suggests the missingness of CAUSE.CATEGORY.DETAIL is probably dependent on CAUSE.CATEGORY. 
 
