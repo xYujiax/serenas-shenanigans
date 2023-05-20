@@ -67,11 +67,11 @@ I do not believe any of the missing data is not missing at random (NMAR). This i
 
 ### Missingness Dependency
 
-In order to better understand what characteristics are associated with different categories of cause, it may be helpful to explore the CAUSE.CATEGORY.DETAIL column to determine how likely its missingness was dependent on the CAUSE.CATEGORY column. The CAUSE.CATEGORY.DETAIL column provides extra details on the cause of a power outage (the CAUSE.CATEGORY column).
+In order to better understand what characteristics are associated with different categories of cause, it may be helpful to explore the CAUSE.CATEGORY.DETAIL column to determine how likely its missingness is dependent on the CAUSE.CATEGORY column.
 
-Null Hypothesis: The missingness of CAUSE.CATEGORY.DETAIL is NOT dependent on CAUSE.CATEGORY.
+**Null Hypothesis:** The missingness of CAUSE.CATEGORY.DETAIL is NOT dependent on CAUSE.CATEGORY.
 
-Alt Hypothesis: The missingness of CAUSE.CATEGORY.DETAIL IS dependent on CAUSE.CATEGORY.
+**Alternate Hypothesis:** The missingness of CAUSE.CATEGORY.DETAIL IS dependent on CAUSE.CATEGORY.**
 
 To test whether or not to reject the Null Hypothesis, I calculated the observed Total Variation Distance (TVD) of the data. Then, I shuffled the values in the CAUSE.CATEGORY.DETAIL and calculated the shuffled TVD 1000 times to create the empirical distribution below. Because the observed TVD is much greater than 95% of the empirical TVDs I simulated, I reject my Null Hypothesis in favor of the Alternate that suggests the missingness of CAUSE.CATEGORY.DETAIL is probably dependent on CAUSE.CATEGORY. 
 
@@ -85,21 +85,21 @@ I conducted the same kind of test to determine whether CAUSE.CATEGORY.DETAIL and
 
 ## Hypothesis Testing
 
-To help answer some aspects of my question, I will conduct the following hypothesis test to allow me to better determe whether the frequency of power outages caused by different categories of cause have drastically changed in 2016 compared to other years.
+To help answer our overarching question, I will conduct the following hypothesis test to better determine whether the frequency of power outages caused by different categories of cause have drastically changed in 2015 & 2016 compared to other years (since data only goes up to July 2016, I combined 2016 with 2015 data).
 
-Null Hypothesis: The proportion of power outages caused by each category of cause is in 2016 is similar to the overall proportion of outages caused by every category of cause recorded from 2000-2016.
+**Null Hypothesis:** The proportion of power outages caused by each category of cause in 2015 & 2016 combined is similar to the overall proportion of outages caused by every category of cause recorded from 2000-2016.
 
-Alternate Hypothesis: The proportion of power outages caused by each category of cause in 2016 is NOT similar to the overall proportion of outages caused by every category of cause recorded from 2000-2016.
+**Alternate Hypothesis:** The proportion of power outages caused by each category of cause in 2015 & 2016 combined is NOT similar to the overall proportion of outages caused by every category of cause recorded from 2000-2016.
 
-Observe: The distribution of power outages caused by each category of cause in 2016 (severe weather, intentional attack, system operability disruption, equipment failure, public appeal, fuel supply emergency, and islanding)
+**Observe:** The distribution of power outages caused by each category of cause in 2015 & 2016 (severe weather, intentional attack, system operability disruption, equipment failure, public appeal, fuel supply emergency, and islanding)
 <iframe src="ass/hyp.html" width=800 height=600 frameBorder=0></iframe>
 
-Test Statistic: Total Variation Distance
+**Test Statistic:** Total Variation Distance (TVD)
 
-Significance Level: 0.01
+**Significance Level**: 0.01
 
-Resulting P-Value: 0.0
+**Resulting P-Value:** 2 x 10<sup>-5</sup>
 
-Conclusion: The null hypothesis may be rejected in favor of the possibility that the distribution of power outages caused by each category of cause in 2016 is different from the overall distribution of power outages caused by each category from 2000-2016. HOWEVER, there wasn't much data for 2016 specifically, so the statistical test may have very skewed results.
+**Conclusion:** The null hypothesis may be rejected in favor of the possibility that the distribution of power outages caused by each category of cause in more recent years (2015 & 2016) is different from the overall distribution of power outages caused by each category from 2000-2016. 
 
 
