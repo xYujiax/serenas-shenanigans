@@ -4,7 +4,7 @@
 
 ## Introduction 
 
-In this project, we studied the effectiveness of spice challenges in building team morale.
+What characteristics are associated with different categories of cause, and how have these changed over time?
 
 ---
 
@@ -50,6 +50,18 @@ This table shows an aggregation of power outages based on the CLIMATE.CATEGORY c
 ### NMAR Analysis
 
 I do not believe any of the missing data is not missing at random (NMAR). This is because most of the missing data can be inferred from other columns in the data. For example, entries in the HURICANE.NAMES column are missing whenever a power outage is not caused by a hurricane, so entries in this column are probably missing by design. Other missing entries are more likely to be MAR rather than NMAR. This can be seen with missing OUTAGE.START.TIME entries. If an outage occurred because of equipment failure or severe weather, it might've been difficult to record the exact time of outage, so the missingness of OUTAGE.START.TIME could depend on CAUSE.CATEGORY.
+
+### Missingness Dependency
+
+In order to better understand what characteristics are associated with different categories of cause, it may be helpful to explore the CAUSE.CATEGORY.DETAIL column to determine how likely its missingness was dependent on the CAUSE.CATEGORY column. The CAUSE.CATEGORY.DETAIL column provides extra details on the cause of a power outage (the CAUSE.CATEGORY column).
+
+Null Hypothesis: The missingness of CAUSE.CATEGORY.DETAIL is NOT dependent on CAUSE.CATEGORY
+Alt Hypothesis: The missingness of CAUSE.CATEGORY.DETAIL IS dependent on CAUSE.CATEGORY
+
+To test whether or not to reject the Null Hypothesis, I calculated the observed Total Variation Distance (TVD) of the data. Then, I shuffled the values in the CAUSE.CATEGORY.DETAIL and calculated the shuffled TVD 1000 times to create the empirical distribution below. Because the observed TVD is much greater than 95% of the empirical TVDs I simulated, I reject my Null Hypothesis in favor of the Alternate that suggests the missingness of CAUSE.CATEGORY.DETAIL is probably dependent on CAUSE.CATEGORY.
+<iframe src="ass/miss1.html" width=800 height=600 frameBorder=0></iframe>
+
+
 
 ---
 
