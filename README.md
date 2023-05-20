@@ -16,7 +16,7 @@ In this project, we'll explore this [dataset](https://www.sciencedirect.com/scie
 | CAUSE.CATEGORY.DETAIL  | Detailed description of the event categories causing the major power outages                                                                                                                                                    |
 | CLIMATE.CATEGORY       | Climate episodes corresponding to the years. The categories—“Warm”, “Cold” or “Normal” episodes of the climate are based on a threshold of ± 0.5 °C for the Oceanic Niño Index (ONI)                                          |
 | HURRICANE.NAMES        | If the outage is due to a hurricane, then the hurricane name is given by this variable                                                                                                                                          |
-| YEAR                   | Year when the outage event occurred                                                                                                                                                                                             |                                  |
+| YEAR                   | Year when the outage event occurred                                                                                                                                                                                             |
 
 
 Information from the above columns will be used to help us analyze the following question: **What characteristics are associated with different categories of cause, and how have these changed over time?**
