@@ -7,6 +7,29 @@
 ## Introduction 
 
 What characteristics are associated with different categories of cause, and how have these changed over time?
+Provide an introduction to your dataset, and clearly state the one question your analysis is centered around. Why should readers of your website care about the dataset and your question specifically? Report the number of rows in the dataset, the names of the columns that are relevant to your question, and descriptions of those relevant columns.
+We'll explore this [dataset](https://www.sciencedirect.com/science/article/pii/S2352340918307182) of major power outages in the continental U.S. from January 2000 to July 2016. Some relevant columns we will be exploring for this analysis are included in the following table:
+
+| Column                 | Description                                                                                                                                                                                                                      |
+|:-----------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| OUTAGE.DURATION        | Duration of outage events (in minutes)                                                                                                                                                                                          |
+| OUTAGE.START.TIME      | Time of the day when the outage event started (as reported by the corresponding Utility in the region)                                                                                                                         |
+| CAUSE.CATEGORY         | Categories of all the events causing the major power outages                                                                                                                                                                     |
+| CAUSE.CATEGORY.DETAIL  | Detailed description of the event categories causing the major power outages                                                                                                                                                    |
+| CLIMATE.CATEGORY       | Climate episodes corresponding to the years. The categories—“Warm”, “Cold” or “Normal” episodes of the climate are based on a threshold of ± 0.5 °C for the Oceanic Niño Index (ONI)                                          |
+| HURRICANE.NAMES        | If the outage is due to a hurricane, then the hurricane name is given by this variable                                                                                                                                          |
+| YEAR                   | Year when the outage event occurred                                                                                                                                                                                             |
+
+
+-----------------------------------------------------------------------------------|
+| OUTAGE.DURATION       | Duration of outage events (in minutes)                                                                                                                                               |
+| OUTAGE.START.TIME     | Time of the day when the outage event started (as reported by the corresponding Utility in the region)                                                                               |
+| CAUSE.CATEGORY        | Categories of all the events causing the major power outages                                                                                                                         |
+| CAUSE.CATEGORY.DETAIL | Detailed description of the event categories causing the major power outages                                                                                                         |
+| CLIMATE.CATEGORY      | Climate episodes corresponding to the years. The categories—“Warm”, “Cold” or “Normal” episodes of the climate are based on a threshold of ± 0.5 °C for the Oceanic Niño Index (ONI) |
+| HURRICANE.NAMES       | If the outage is due to a hurricane, then the hurricane name is given by this variable                                                                                               |
+| YEAR                  | Year when the outage event occurred                                                                                                                                                  |
+
 
 
 
@@ -16,7 +39,7 @@ What characteristics are associated with different categories of cause, and how 
 
 ### Data Cleaning
 
-There were some columns in the excel that contained notes about the sheet and noted the units of each variable. These were made for improved readibility but could not be used in actual data collection and analysis, so I excluded these from my dataframe before applying analysis. Additionally, I combined OUTAGE.START.DATE and OUTAGE.START.TIME into one timestamp in the column OUTAGE.START. The same was done to create the OUTAGE.RESTORATION column based on outage restoration date and time.
+There were some columns in the excel that contained notes about the sheet and noted the units of each variable. These were made for improved readibility but could not be used in actual data collection and analysis, so I excluded these from my dataframe before applying analysis. Additionally, I combined OUTAGE.START.DATE and OUTAGE.START.TIME into one timestamp in the column OUTAGE.START. The same was done to create the OUTAGE.RESTORATION column based on outage restoration date and time. This was done to compute 
 
 ### Univariate Analysis
 
