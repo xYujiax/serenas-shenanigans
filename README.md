@@ -2,7 +2,7 @@
 
 ---
 
-## Introduction
+## Introduction 
 
 In this project, we studied the effectiveness of spice challenges in building team morale.
 
@@ -10,7 +10,7 @@ In this project, we studied the effectiveness of spice challenges in building te
 
 ## Cleaning and EDA
 
-There were some columns in the excel that contained notes about the sheet and noted the units of each variable. These were made for improved readibility but could not be used in actual data collection and analysis, so I excluded these from my dataframe before applying analysis. Additionally, I combined 'OUTAGE.START.DATE' and 'OUTAGE.START.TIME' into one timestamp in the column 'OUTAGE.START'. The same was done to create the 'OUTAGE.RESTORATION' column based on outage restoration date and time.
+There were some columns in the excel that contained notes about the sheet and noted the units of each variable. These were made for improved readibility but could not be used in actual data collection and analysis, so I excluded these from my dataframe before applying analysis. Additionally, I combined OUTAGE.START.DATE and OUTAGE.START.TIME into one timestamp in the column OUTAGE.START. The same was done to create the OUTAGE.RESTORATION column based on outage restoration date and time.
 
 ### Univariate Analysis
 
@@ -30,7 +30,7 @@ Continuing with bivariate exploration, the following line plot includes the thre
 
 ### Interesting Aggregate
 
-This table shows an aggregation of power outages based on the CLIMATE.CATEGORY column corresponding to whether an outage occurs during a 'cold', 'normal', or 'warm' climate episode (based on the Oceanic Niño Index). The Mean column represents the average number of outages that occur within each Climate Category. This aggregation is potentially useful in exploring whether a certain climate type has some affect over the number of power outages that occur.
+This table shows an aggregation of power outages based on the CLIMATE.CATEGORY column corresponding to whether an outage occurs during a cold, normal, or warm climate episode (based on the Oceanic Niño Index). The Mean column represents the average number of outages that occur within each Climate Category. This aggregation is potentially useful in exploring whether a certain climate type has some affect over the number of power outages that occur.
 
 
 | Climate Category   |    Mean |
@@ -45,17 +45,7 @@ This table shows an aggregation of power outages based on the CLIMATE.CATEGORY c
 
 ## Assessment of Missingness
 
-Here's what a Markdown table looks like. Note that the code for this table was generated _automatically_ from a DataFrame, using
-
-```py
-print(climate.head().to_markdown(index=False))
-```
-
-| Climate Category   |    Mean |
-|:-------------------|--------:|
-| cold               | 753.262 |
-| normal             | 759.289 |
-| warm               | 804.055 |
+I do not believe any of the missing data is not missing at random (NMAR). This is because most of the missing data can be inferred from other columns in the data. For example, entries in the HURICANE.NAMES column are missing whenever a power outage is not caused by a hurricane, so entries in this column are probably missing by design. Other missing entries are more likely to be MAR rather than NMAR. This can be seen with missing OUTAGE.START.TIME entries. If an outage occurred because of equipment failure or severe weather, it might've been difficult to record the exact time of outage, so the missingness of OUTAGE.START.TIME could depend on CAUSE.CATEGORY.
 
 ---
 
