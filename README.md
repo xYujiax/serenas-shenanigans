@@ -30,10 +30,6 @@ To explore the bivariate relationship between power outage causes and average po
 <iframe src="ass/eda2.html" width=800 height=600 frameBorder=0></iframe>
 
 
-Continuing with bivariate exploration, the following line plot includes the three overall most common power outage causes (severe weather, intentional attack, and system operability disruption), and it shows the proportion of power outages they cause each year from 2000-2016. The graph suggests there may have been a decrease in the proportion of outages caused by severe weather and an increase in the proportion of outages caused by intentional attacks.
-<iframe src="ass/eda3.html" width=800 height=600 frameBorder=0></iframe>
-
-
 ### Interesting Aggregate
 
 This table shows an aggregation of power outages based on the CLIMATE.CATEGORY column corresponding to whether an outage occurs during a cold, normal, or warm climate episode (based on the Oceanic Niño Index). The Mean column represents the average number of outages that occur within each Climate Category. This aggregation is potentially useful in exploring whether a certain climate type has some affect over the number of power outages that occur.
