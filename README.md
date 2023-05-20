@@ -82,6 +82,7 @@ Null Hypothesis: The proportion of power outages caused by each category of caus
 Alternate Hypothesis: The proportion of power outages caused by each category of cause in 2016 is NOT similar to the overall proportion of outages caused by every category of cause recorded from 2000-2016.
 
 Observe: The distribution of power outages caused by each category of cause in 2016 (severe weather, intentional attack, system operability disruption, equipment failure, public appeal, fuel supply emergency, and islanding)
+<iframe src="ass/hyp.html" width=800 height=600 frameBorder=0></iframe>
 
 Test Statistic: Total Variation Distance
 
