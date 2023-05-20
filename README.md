@@ -1,6 +1,5 @@
----
-title: What's the culprit behind your blackout?
----
+# What's the culprit behind your blackout?
+
 by Serena Xie (scxie@ucsd.edu)
 
 
