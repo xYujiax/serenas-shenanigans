@@ -1,1 +1,9 @@
-theme: minima
+# Site settings
+title: serena's shenanigans
+author:
+  name: Serena Xie
+  email: scxie@ucsd.edu
+description: "work in progress"
+
+# Build settings
+remote_theme: jekyll/minima
