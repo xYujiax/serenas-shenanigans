@@ -10,6 +10,8 @@ In this project, we studied the effectiveness of spice challenges in building te
 
 ## Cleaning and EDA
 
+### Data Cleaning
+
 There were some columns in the excel that contained notes about the sheet and noted the units of each variable. These were made for improved readibility but could not be used in actual data collection and analysis, so I excluded these from my dataframe before applying analysis. Additionally, I combined OUTAGE.START.DATE and OUTAGE.START.TIME into one timestamp in the column OUTAGE.START. The same was done to create the OUTAGE.RESTORATION column based on outage restoration date and time.
 
 ### Univariate Analysis
@@ -44,6 +46,8 @@ This table shows an aggregation of power outages based on the CLIMATE.CATEGORY c
 ---
 
 ## Assessment of Missingness
+
+### NMAR Analysis
 
 I do not believe any of the missing data is not missing at random (NMAR). This is because most of the missing data can be inferred from other columns in the data. For example, entries in the HURICANE.NAMES column are missing whenever a power outage is not caused by a hurricane, so entries in this column are probably missing by design. Other missing entries are more likely to be MAR rather than NMAR. This can be seen with missing OUTAGE.START.TIME entries. If an outage occurred because of equipment failure or severe weather, it might've been difficult to record the exact time of outage, so the missingness of OUTAGE.START.TIME could depend on CAUSE.CATEGORY.
 
