@@ -1,10 +1,14 @@
 # What's the culprit behind your blackout?
 
+
+
 ---
 
 ## Introduction 
 
 What characteristics are associated with different categories of cause, and how have these changed over time?
+
+
 
 ---
 
@@ -56,6 +60,7 @@ I do not believe any of the missing data is not missing at random (NMAR). This i
 In order to better understand what characteristics are associated with different categories of cause, it may be helpful to explore the CAUSE.CATEGORY.DETAIL column to determine how likely its missingness was dependent on the CAUSE.CATEGORY column. The CAUSE.CATEGORY.DETAIL column provides extra details on the cause of a power outage (the CAUSE.CATEGORY column).
 
 Null Hypothesis: The missingness of CAUSE.CATEGORY.DETAIL is NOT dependent on CAUSE.CATEGORY.
+
 Alt Hypothesis: The missingness of CAUSE.CATEGORY.DETAIL IS dependent on CAUSE.CATEGORY.
 
 To test whether or not to reject the Null Hypothesis, I calculated the observed Total Variation Distance (TVD) of the data. Then, I shuffled the values in the CAUSE.CATEGORY.DETAIL and calculated the shuffled TVD 1000 times to create the empirical distribution below. Because the observed TVD is much greater than 95% of the empirical TVDs I simulated, I reject my Null Hypothesis in favor of the Alternate that suggests the missingness of CAUSE.CATEGORY.DETAIL is probably dependent on CAUSE.CATEGORY. 
@@ -63,12 +68,29 @@ To test whether or not to reject the Null Hypothesis, I calculated the observed 
 A plausible interpretation for why the the missingness of a cause category's details is dependent on the kind of cause category an outage has could be made by looking at how cause categories are split into seven categories: severe weather, intentional attack, system operability disruption, equipment failure, public appeal, fuel supply emergency, and islanding. For more vague categories like public appeal and intentional attack, it might be difficult to come up with extra details, so those in charge of data collection might not bother to specify any details in CAUSE.CATEGORY.DETAIL and opt to leave it blank instead.
 <iframe src="ass/miss1.html" width=800 height=600 frameBorder=0></iframe>
 I conducted the same kind of test to determine whether CAUSE.CATEGORY.DETAIL and OUTAGE.START.TIME and concluded that it is unlikely that CAUSE.CATEGORY.DETAIL is MAR based on OUTAGE.START.TIME. This is helpful in understanding that the start time of an outage does not really have any bearing over whether or not the cause category details will be disclosed for a power outage.
- 
-
-
 
 
 
 ---
 
 ## Hypothesis Testing
+
+To help answer some aspects of my question, I will conduct the following hypothesis test to allow me to better determe whether the frequency of power outages caused by different categories of cause have drastically changed in 2016 compared to other years.
+
+Null Hypothesis: The proportion of power outages caused by each category of cause is in 2016 is similar to the overall proportion of outages caused by every category of cause recorded from 2000-2016.
+
+Alternate Hypothesis: The proportion of power outages caused by each category of cause in 2016 is NOT similar to the overall proportion of outages caused by every category of cause recorded from 2000-2016.
+
+Observe: The distribution of power outages caused by each category of cause in 2016 (severe weather, intentional attack, system operability disruption, equipment failure, public appeal, fuel supply emergency, and islanding)
+
+Test Statistic: Total Variation Distance
+
+Significance Level: 0.01
+
+Resulting P-Value: 0.0
+
+Conclusion: The null hypothesis may be rejected in favor of the possibility that the distribution of power outages caused by each category of cause in 2016 is different from the overall distribution of power outages caused by each category from 2000-2016. HOWEVER, there wasn't much data for 2016 specifically, so the statistical test may have very skewed results.
+
+
+
+**To Dos: add an arrow to missingness image. add more year ticks to the time series
