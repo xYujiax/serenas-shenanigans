@@ -2,7 +2,7 @@
 
 
 ---
-Note: My exploratory data analysis on this dataset can be found [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
+### Note: My exploratory data analysis of the power outage dataset used in this project can be found [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
 
 ## Framing the Problem 
 
