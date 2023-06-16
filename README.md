@@ -5,7 +5,7 @@
 
 ## Framing the Problem 
 
-I would like to explore using regression to predict the severity of major power outages. More specifically, my aim is to predict "OUTAGE.DURATION" (the duration of a power outage in minutes); I chose this as my response variable under the assumption that more severe outages typically last longer, so I would like to use power outage duration to express power outage severity. 
+I would like to explore using regression to predict the severity of major power outages. More specifically, my aim is to predict OUTAGE.DURATION (the duration of a power outage in minutes); I chose this as my response variable under the assumption that more severe outages typically last longer, so I would like to use power outage duration to express power outage severity. 
 
 Regarding my models, I will be using Root Mean Squared Error (RMSE) as the metric to evaluate their effectiveness. I chose this metric over R² (another popular metric for regression models) because R² typically increases when more features are added, regardless of whether they actually have substantial predictive power. This is because additional features have the potential to explain additional variance in the dependent variable, thereby resulting in a higher R². However, this would not necessarily indicate that my model has improved if I try adding multiple new features, so I will stick with RMSE to better see how far my model's predictions are from reality.
 
@@ -19,50 +19,34 @@ Because I am trying to predict OUTAGE.DURATION from the rest of my data, I won't
 
 To predict OUTAGE.DURATION, I decided to use a Decision Tree Regression model. This is a regression model that splits data from features into a tree-like structure, where each leaf node represents a prediction of the response variable. The following table indicates the types of features I used for my baseline model:
 
-| Nominal         | Quantitative   |
-|:-----------------|:---------------|
-| POSTAL.CODE      | ANOMALY.LEVEL  |
-| CLIMATE.CATEGORY | MONTH          |
-|                  | YEAR           |
+| Nomainal Features   | Quantitative Features   |
+|:--------------------|:------------------------|
+| POSTAL.CODE         | ANOMALY.LEVEL           |
+| CLIMATE.CATEGORY    | MONTH                   |
+|                     | YEAR                    |
 
-I performed One Hot Encoding on my nominal variables (POSTAL.CODE and CLIMATE.CATEGORY) to encode them into a numeric format that I can use for regression. The remaining quantitative variables were simply passed through for my model to directly work with.
+I performed One Hot Encoding on my nominal variables (POSTAL.CODE and CLIMATE.CATEGORY) to encode them into a numeric format that I can use for regression. The remaining quantitative variables were directly passed into my model without any transformation.
 
-After using cross-validation to test this baseline model, I ended with an RMSE of a whopping **3225 minutes**. An interpretation of this is that on average, the predicted outage durations from my model deviate from the actual outage duration by ≈ 3225 minutes -- that's more than 2 days! Considering that the entire dataset's average power outage duration is 2625 minutes, this puts into perspective how the current model is not very good at providing accurate predictions. 
-
-
-
-### Data Cleaning
-
-There were some columns in the excel that contained notes about the sheet and noted the units of each variable. These were made for improved readibility but could not be used in actual data collection and analysis, so I excluded these from my dataframe before applying analysis. Additionally, I combined OUTAGE.START.DATE and OUTAGE.START.TIME into one timestamp in the column OUTAGE.START. The same was done to create the OUTAGE.RESTORATION column based on outage restoration date and time. This was done to compute 
-
-### Univariate Analysis
-
-The following is a univariate bar chart listing the different categories of power outage causes and the percent of outages they contribute to. The prime contributer to power outages appears to be severe weather.
-<iframe src="ass/eda1.html" width=800 height=600 frameBorder=0></iframe>
-
-
-### Bivariate Analysis
-
-To explore the bivariate relationship between power outage causes and average power outage duration, we can look at this following bar chart. The chart suggests that on average, the longest power outages appear to be caused by fuel supply emergencies. 
-<iframe src="ass/eda2.html" width=800 height=600 frameBorder=0></iframe>
-
-
-### Interesting Aggregate
-
-This table shows an aggregation of power outages based on the CLIMATE.CATEGORY column corresponding to whether an outage occurs during a cold, normal, or warm climate episode (based on the Oceanic Niño Index). The Mean column represents the average number of outages that occur within each Climate Category. This aggregation is potentially useful in exploring whether a certain climate type has some affect over the number of power outages that occur.
-
-
-| Climate Category   |    Mean |
-|:-------------------|--------:|
-| cold               | 753.262 |
-| normal             | 759.289 |
-| warm               | 804.055 |
+Using cross-validation to test this baseline model resulted in an RMSE of a whopping **3225 minutes**. An interpretation of this is that on average, the predicted outage durations from my model deviate from the actual outage duration by ≈ 3225 minutes -- that's more than 2 days! Considering that the entire dataset's average power outage duration is 2625 minutes, this puts into perspective how the current model is not very good at providing accurate predictions. 
 
 
 
 ---
 
 ## Final Model
+
+To improve upon my baseline model, I engineered two new features: (imputed) CUSTOMERS.AFFECTED and (standardized) ANOMALY.LEVEL
+
+I considered adding CUSTOMERS.AFFECTED as a new feature because power outages that affect many customers could be seen as more "severe". This gave the possibility that more severe power outages that were longer-lasting had some kind of correlation with power outages affecting more customers. However, since there were several missing CUSTOMERS.AFFECTED entries which were most likely Missing At Random (MAR), I decided to perform *conditional mean imputation* on missing CUSTOMERS.AFFECTED entries by grouping data based on their POSTAL.CODE variable (eg. CA, NV, AZ, etc.). I did this  under the assumption that outages occurring in similar areas affected a similar number of customers. Unfortunately, ALL outage data for North and South Dakota were missing CUSTOMERS.AFFECTED values, so I instead performed regular *mean imputation* on those entries by using the average of all CUSTOMERS.AFFECTED data. These transformations were all done by implementing a custom imputation transformer.
+
+
+I considered standardizing ANOMALY.LEVEL (representing )
+
+
+
+1. State the features you added and why they are good for the data and prediction task. Note that you can’t simply state “these features improved my accuracy”, since you’d need to choose these features and fit a model before noticing that – instead, talk about why you believe these features improved your model’s performance from the perspective of the data generating process.
+
+2. Describe the modeling algorithm you chose, the hyperparameters that ended up performing the best, and the method you used to select hyperparameters and your overall model. Describe how your Final Model’s performance is an improvement over your Baseline Model’s performance.
 
 ### NMAR Analysis
 
