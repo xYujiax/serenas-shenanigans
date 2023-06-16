@@ -2,6 +2,7 @@
 
 
 ---
+Note: My exploratory data analysis on this dataset can be found [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
 
 ## Framing the Problem 
 
@@ -51,11 +52,11 @@ For my final Decision Tree Regression model, I utilized GridSearchCV to help me 
 
 ## Fairness Analysis
 
-Given that almost half of all CAUSE.CATEGORY (cause of a power outage) entries in the power outage dataset are attributed to "severe weather", I wondered: *Does my final model perform worse for outages NOT caused by severe weather than outages caused by severe weather?*
+Given that almost half of all CAUSE.CATEGORY (cause of a power outage) entries in the power outage dataset are attributed to "severe weather", *Does my final model perform worse for outages NOT caused by severe weather than outages caused by severe weather?*
 
-**Null Hypothesis:** The model precision for outages caused by severe weather and outages caused by something else are roughly the same and any differences are likely due to random chance.
+**Null Hypothesis:** My final model is fair -- outage duration predictions for outages caused by severe weather and outages caused by something else are roughly the same, and any differences are likely due to random chance.
 
-**Alternate Hypothesis:** The model precision for outages not caused by severe weather is lower than its precision for outages caused by severe weather.
+**Alternate Hypothesis:** My final model isn't fair -- outage duration predictions for outages not caused by severe weather are lower than duration predictions for outages caused by severe weather.
 
 **Evaluation Metric:** Root Mean Squared Error (RMSE)
 
@@ -67,6 +68,9 @@ Given that almost half of all CAUSE.CATEGORY (cause of a power outage) entries i
 
 **Resulting P-Value:** 0.35
 
-**Conclusion:** The null hypothesis has NOT been rejected at the 0.05 significance level, so it is likely that power outage durations that are predicted using my final model are similar regardless of whether an outage is caused by severe weather or not. 
+**Conclusion:** The null hypothesis has NOT been rejected at the 0.05 significance level, so it is likely that power outage durations which are predicted using my final model are similar regardless of whether an outage is caused by severe weather or not. 
+
+
+
 
 
