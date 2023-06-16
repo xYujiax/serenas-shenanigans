@@ -23,9 +23,9 @@ To predict OUTAGE.DURATION, I decided to use a Decision Tree Regression model. T
 |:--------------------|:------------------------|
 | POSTAL.CODE         | ANOMALY.LEVEL           |
 | CLIMATE.CATEGORY    | MONTH                   |
-|                     | YEAR                    |
+| CAUSE.CATEGORY      | YEAR                    |
 
-I performed One Hot Encoding on my nominal variables (POSTAL.CODE and CLIMATE.CATEGORY) to encode them into a numeric format that I can use for regression. The remaining quantitative variables were directly passed into my model without any transformation.
+I performed One Hot Encoding on my nominal variables to convert them to a numeric format that I could use for regression. The remaining quantitative variables were directly passed into my model without any transformation.
 
 Using cross-validation to test this baseline model resulted in an RMSE of a whopping **3225 minutes**. An interpretation of this is that on average, the predicted outage durations from my model deviate from the actual outage duration by ≈ 3225 minutes -- that's more than 2 days! Considering that the entire dataset's average power outage duration is 2625 minutes, this puts into perspective how the current model is not very good at providing accurate predictions. 
 
@@ -40,13 +40,12 @@ To improve upon my baseline model, I engineered two new features: (imputed) CUST
 I considered adding CUSTOMERS.AFFECTED as a new feature because power outages that affect many customers could be seen as more "severe". This gave the possibility that more severe power outages that were longer-lasting had some kind of correlation with power outages affecting more customers. However, since there were several missing CUSTOMERS.AFFECTED entries which were most likely Missing At Random (MAR), I decided to perform *conditional mean imputation* on missing CUSTOMERS.AFFECTED entries by grouping data based on their POSTAL.CODE variable (eg. CA, NV, AZ, etc.). I did this  under the assumption that outages occurring in similar areas affected a similar number of customers. Unfortunately, ALL outage data for North and South Dakota were missing CUSTOMERS.AFFECTED values, so I instead performed regular *mean imputation* on those entries by using the average of all CUSTOMERS.AFFECTED data. These transformations were all done by implementing a custom imputation transformer.
 
 
-I considered standardizing ANOMALY.LEVEL (representing )
+I considered standardizing my remaining quantitative feature, ANOMALY.LEVEL (representing Oceanic Niño Index (ONI) scores), to create a new feature ensuring equal importance and comparability among my quantitative features. While this isn't necessary for Decision Tree Regression, in the case that I continue to add more quantitative features or try yet another regression model, having my features standardized would prevent variables with larger scales from dominating. 
 
 
+For my final Decision Tree Regression model, I utilized GridSearchCV to help me choose an optimal max_depth hyperparameter that would limit the number of splits in my tree. Ultimately, a max_depth of 3 performed the best and allowed my model to generalize better on unseen data without overfitting to my training data. My final model's RMSE was **2748 minutes**. Although this is still a fairly large amount of error, it is a rougly 15% improvement from my baseline model's RMSE of 3225 minutes.
 
-1. State the features you added and why they are good for the data and prediction task. Note that you can’t simply state “these features improved my accuracy”, since you’d need to choose these features and fit a model before noticing that – instead, talk about why you believe these features improved your model’s performance from the perspective of the data generating process.
 
-2. Describe the modeling algorithm you chose, the hyperparameters that ended up performing the best, and the method you used to select hyperparameters and your overall model. Describe how your Final Model’s performance is an improvement over your Baseline Model’s performance.
 
 ### NMAR Analysis
 
