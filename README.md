@@ -1,10 +1,9 @@
-# What's the culprit behind your blackout?
-
+# How long was your power outage?
 
 
 ---
 
-## Introduction 
+## Framing the Problem 
 
 In this project, we'll explore this [dataset](https://www.sciencedirect.com/science/article/pii/S2352340918307182) containing 1534 rows of data pertaining to major power outages in the continental U.S. from January 2000 to July 2016. Some relevant columns we will be exploring for this analysis are included in the following table:
 
@@ -26,7 +25,7 @@ This is particularly relevant to us (especially those of us living in the U.S.) 
 
 ---
 
-## Cleaning and EDA
+## Baseline Model
 
 ### Data Cleaning
 
@@ -59,7 +58,7 @@ This table shows an aggregation of power outages based on the CLIMATE.CATEGORY c
 
 ---
 
-## Assessment of Missingness
+## Final Model
 
 ### NMAR Analysis
 
@@ -83,7 +82,7 @@ I conducted the same kind of test to determine whether CAUSE.CATEGORY.DETAIL and
 
 ---
 
-## Hypothesis Testing
+## Fairness Analysis
 
 To help answer our overarching question, I will conduct the following hypothesis test to better determine whether the frequency of power outages caused by different categories of cause have drastically changed in 2015 & 2016 compared to other years (since data only goes up to July 2016, I combined 2016 with 2015 data).
 
