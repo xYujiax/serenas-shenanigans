@@ -2,7 +2,7 @@
 
 
 ---
-### Note: My exploratory data analysis of the power outage dataset used in this project can be found [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
+#### Note: My exploratory data analysis of the power outage dataset used in this project can be found [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
 
 ## Framing the Problem 
 
@@ -68,7 +68,7 @@ Given that almost half of all CAUSE.CATEGORY (cause of a power outage) entries i
 
 **Resulting P-Value:** 0.35
 
-**Conclusion:** The null hypothesis has NOT been rejected at the 0.05 significance level, so it is likely that power outage durations which are predicted using my final model are similar regardless of whether an outage is caused by severe weather or not. 
+**Conclusion:** The null hypothesis has NOT been rejected at the 0.05 significance level, so it is likely that power outage durations which are predicted using my final model are similar regardless of whether outages are caused by severe weather or not. 
 
 
 
