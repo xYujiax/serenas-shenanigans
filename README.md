@@ -5,21 +5,11 @@
 
 ## Framing the Problem 
 
-In this project, we'll explore this [dataset](https://www.sciencedirect.com/science/article/pii/S2352340918307182) containing 1534 rows of data pertaining to major power outages in the continental U.S. from January 2000 to July 2016. Some relevant columns we will be exploring for this analysis are included in the following table:
+I would like to explore using regression to predict the severity of major power outages. More specifically, my aim is to predict "OUTAGE.DURATION" (the duration of a power outage in minutes); I chose this as my response variable under the assumption that more severe outages typically last longer, so I would like to use power outage duration to express power outage severity. 
 
-| Column                 | Description                                                                                                                                                                                                                      |
-|:-----------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| OUTAGE.DURATION        | Duration of outage events (in minutes)                                                                                                                                                                                          |
-| OUTAGE.START.TIME      | Time of the day when the outage event started (as reported by the corresponding Utility in the region)                                                                                                                         |
-| CAUSE.CATEGORY         | Categories of all the events causing the major power outages                                                                                                                                                                     |
-| CAUSE.CATEGORY.DETAIL  | Detailed description of the event categories causing the major power outages                                                                                                                                                    |
-| CLIMATE.CATEGORY       | Climate episodes corresponding to the years. The categories—“Warm”, “Cold” or “Normal” episodes of the climate are based on a threshold of ± 0.5 °C for the Oceanic Niño Index (ONI)                                          |
-| HURRICANE.NAMES        | If the outage is due to a hurricane, then the hurricane name is given by this variable                                                                                                                                          |
-| YEAR                   | Year when the outage event occurred                                                                                                                                                                                             |
+Regarding my models, I will be using Root Mean Squared Error (RMSE) as the metric to evaluate their effectiveness. I chose this metric over R² (another popular metric for regression models) because R² typically increases when more features are added, regardless of whether they actually have substantial predictive power. This is because additional features have the potential to explain additional variance in the dependent variable, thereby resulting in a higher R². However, this would not necessarily indicate that my model has improved if I try adding multiple new features, so I will stick with RMSE to better see how far my model's predictions are from reality.
 
-
-Information from the above columns will be used to help us analyze the following question: **What characteristics are associated with different categories of cause, and how have these changed over time?**
-This is particularly relevant to us (especially those of us living in the U.S.) because finding trends and understanding the characteristics of causes of power outages may help us predict the behavior of future power outages. 
+Because I am trying to predict OUTAGE.DURATION from the rest of my data, I won't use OUTAGE.DURATION as a feature for training my model because I'm not supposed to know that information at the time of prediction. For the same reason, I will also be excluding OUTAGE.RESTORATION.TIME and OUTAGE.RESTORATION.DATE from being potential features. I will however, consider OUTAGE.MONTH and OUTAGE.YEAR as potential features since I'm only predicting how long an outage lasts, not *when* it occurs.
 
 
 
