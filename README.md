@@ -17,6 +17,20 @@ Because I am trying to predict OUTAGE.DURATION from the rest of my data, I won't
 
 ## Baseline Model
 
+To predict OUTAGE.DURATION, I decided to use a Decision Tree Regression model. This is a regression model that splits data from features into a tree-like structure, where each leaf node represents a prediction of the response variable. The following table indicates the types of features I used for my baseline model:
+
+| Nominal         | Quantitative   |
+|:-----------------|:---------------|
+| POSTAL.CODE      | ANOMALY.LEVEL  |
+| CLIMATE.CATEGORY | MONTH          |
+|                  | YEAR           |
+
+I performed One Hot Encoding on my nominal variables (POSTAL.CODE and CLIMATE.CATEGORY) to encode them into a numeric format that I can use for regression. The remaining quantitative variables were simply passed through for my model to directly work with.
+
+After using cross-validation to test this baseline model, I ended with an RMSE of a whopping **3225 minutes**. An interpretation of this is that on average, the predicted outage durations from my model deviate from the actual outage duration by ≈ 3225 minutes -- that's more than 2 days! Considering that the entire dataset's average power outage duration is 2625 minutes, this puts into perspective how the current model is not very good at providing accurate predictions. 
+
+
+
 ### Data Cleaning
 
 There were some columns in the excel that contained notes about the sheet and noted the units of each variable. These were made for improved readibility but could not be used in actual data collection and analysis, so I excluded these from my dataframe before applying analysis. Additionally, I combined OUTAGE.START.DATE and OUTAGE.START.TIME into one timestamp in the column OUTAGE.START. The same was done to create the OUTAGE.RESTORATION column based on outage restoration date and time. This was done to compute 
